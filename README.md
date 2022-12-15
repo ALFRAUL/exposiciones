@@ -1,5 +1,7 @@
-# Este sitio esta desarrollado con la libreria reveal.js
- no olvides reconstruir los nodulos de node
+# Este sitio está desarrollado con la librería reveal.js
+ 
+ No olvides reconstruir los nódulos de node
+ 
  ```
   npm install
  ```
