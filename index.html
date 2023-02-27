@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>FLUX</title>
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
@@ -19,19 +19,103 @@
 		<div class="reveal">
 			<div class="slides">
 				<section data-background-gradient="linear-gradient(to bottom, #283b95, #17b2c3)">
-					<h1>Antes de Empezar</h1>
+					<h1>FLUX</h1>
 					<ul class="fragment">
-						<li class="fragment">Evita estar atascado mucho tiempo</li>
-						<p class="fragment">Pero...</p>
+						<li class="fragment">Objetivo de hoy</li>						
 						<ul class="fragment">
-							<li class="fragment">Hablar con otro estudiante</li>
-							<li class="fragment">Hablar con mentores</li>
+							<li class="fragment">Aprender a usar Flux de nuestra Template</li>
+							<li class="fragment">Usar flux(template) con Context</li>								
 						</ul>						
-					</ul>
-														
-				  </section>
-				<section>Slide 1</section>
-				<section>Slide 2</section>				
+					</ul>														
+				</section>
+				<section data-background-gradient="linear-gradient(to bottom, #283b95, #17b2c3)">
+					<h2>Problemas de escalabilidad: </h2>
+					<p class="fragment">
+						 Con la arquitectura tradicional, a medida que las aplicaciones React se volvían más grandes y más complejas, se volvían cada vez más difíciles de mantener y depurar. Los datos se propagaban hacia abajo a través de las propiedades y los estados, lo que dificultaba la comprensión de cómo los datos fluían por la aplicación.
+					</p>																			
+				</section>
+				<section data-background-gradient="linear-gradient(to bottom, #283b95, #17b2c3)">
+					<h2>Problemas de estado compartido:</h2>
+					<p class="fragment">
+						 En la arquitectura tradicional, era común que varios componentes compartieran el mismo estado. Esto hacía que fuera difícil de rastrear cómo y cuándo se actualizaba el estado y podía llevar a errores y comportamientos inesperados.
+					</p>																			
+				</section>	
+				<section data-background-gradient="linear-gradient(to bottom, #283b95, #17b2c3)">
+					<h2>Problemas de control de flujo:</h2>
+					<p class="fragment">
+						 En la arquitectura tradicional, los datos se propagaban hacia abajo a través de las propiedades y los estados, lo que significaba que el control de flujo estaba descentralizado. Esto hacía que fuera difícil de entender cómo los datos se estaban procesando y qué componentes estaban involucrados.
+					</p>																			
+				</section>
+				<section data-background-gradient="linear-gradient(to bottom, #283b95, #17b2c3)">
+					<h2>Flux intro</h2>
+					<img src="img/Flux-3.png">
+					<p>El patrón Flux es una arquitectura de aplicación de una sola dirección que se utiliza en React. Fue creado por Facebook para abordar los problemas que anteriormente describimos.</p>																			
+				</section>
+				<section data-background-gradient="linear-gradient(to bottom, #283b95, #17b2c3)">
+					<h2>¿Qué es el patrón Flux?</h2>
+					<img src="img/Flux-3.png">
+					<p>Consta de : Dispatcher, Stores, Views (Components) y Actions. En lugar de propagar datos hacia abajo a través de las propiedades y los estados, el patrón Flux utiliza un flujo unidireccional de datos que comienza en las acciones y se propaga a través del dispatcher, las tiendas y finalmente llega a las vistas.</p>																			
+				</section>
+				<section data-background-gradient="linear-gradient(to bottom, #283b95, #17b2c3)">
+					<h2>Dispatcher</h2>
+					<img src="img/dispatcher.png">
+																							
+				</section>	
+				<section data-background-gradient="linear-gradient(to bottom, #283b95, #17b2c3)">
+					<h2>Dispatcher</h2>					
+					<p>El Dispatcher es el núcleo del patrón Flux. Es responsable de recibir acciones de las vistas y enviarlas a las tiendas correspondientes. El Dispatcher garantiza que todas las acciones se manejen en el orden en que se recibieron y que las tiendas se actualicen en consecuencia.</p>																			
+				</section>
+				<section data-background-gradient="linear-gradient(to bottom, #283b95, #17b2c3)">
+					<h2>Stores</h2>					
+					<p>Las Stores son objetos que contienen el estado de la aplicación y la lógica de negocio. Cuando el Dispatcher recibe una acción, envía una copia de la acción a todas las stores relevantes. Cada store actualiza su estado en consecuencia y emite un evento de cambio para notificar a las vistas de que los datos han cambiado.</p>																			
+				</section>	
+				<section data-background-gradient="linear-gradient(to bottom, #283b95, #17b2c3)">
+					<h2>Stores</h2>
+					<div class="d-flex">
+						<img src="img/store0.png">
+						<img src="img/store1.png">
+					</div>
+				</section>
+				<section data-background-gradient="linear-gradient(to bottom, #283b95, #17b2c3)">
+					<h2>Actions</h2>
+					<div class="d-flex">
+					<img src="img/actions.png">				
+					<p>Define los tipos de acciones que se pueden tomar en la aplicación y los datos correspondientes que se enviarán al Dispatcher.</p></div>																		
+				</section>
+				<section data-background-gradient="linear-gradient(to bottom, #283b95, #17b2c3)">
+					<h2>Actions</h2>
+					<p>Las Actions son objetos simples que contienen información sobre lo que sucedió en la interfaz de usuario (por ejemplo, el usuario hizo clic en un botón). Las Actions se envían al Dispatcher y se utilizan para actualizar el estado de las tiendas.</p>																	
+				</section>
+				<section data-background-gradient="linear-gradient(to bottom, #283b95, #17b2c3)">
+					<h2>Views(o Components) </h2>												
+					<p>Las Views son los componentes React que se encargan de representar la interfaz de usuario. En lugar de recibir datos directamente de los estados o las propiedades de los componentes superiores, las vistas escuchan los eventos de cambio emitidos por las tiendas y se actualizan en consecuencia.</p>																		
+				</section>
+				<section data-background-gradient="linear-gradient(to bottom, #283b95, #17b2c3)">
+					<h2>Views</h2>
+					<div class="d-flex">
+						<img src="img/view0.png">
+						<img src="img/view1.png">
+					</div>
+				</section>
+				<section data-background-gradient="linear-gradient(to bottom, #283b95, #17b2c3)">
+					<h2> Ventajas del patrón Flux </h2>												
+					<p>El patrón Flux tiene varias ventajas sobre la arquitectura tradicional de React. Por un lado, el flujo unidireccional de datos hace que sea mucho más fácil de entender y depurar el código. Además, las tiendas hacen que sea más fácil de gestionar el estado de la aplicación, lo que significa que se pueden evitar los problemas comunes de los estados compartidos entre múltiples componentes.</p>																		
+				</section>
+				<section data-background-gradient="linear-gradient(to bottom, #283b95, #17b2c3)">
+					<h2> Conclusión</h2>												
+					<p>el patrón Flux es una arquitectura de aplicación que utiliza un flujo unidireccional de datos para hacer que el código sea más fácil de entender y depurar. Se utiliza en aplicaciones de React para estructurar el flujo de datos y proporcionar una forma organizada y escalable de manejar grandes conjuntos de datos y flujos de datos complejos.</p>																		
+				</section>
+				<section data-background-gradient="linear-gradient(to bottom, #283b95, #17b2c3)">
+					<h2> Conclusión</h2>												
+					<p>Al utilizar Flux, se separan claramente las responsabilidades de cada componente de la aplicación, lo que facilita la resolución de errores y la identificación de las causas de los problemas. Al tener un flujo unidireccional de datos, se garantiza que las actualizaciones de estado se realicen de manera predecible y controlada, lo que evita errores impredecibles y garantiza que la aplicación funcione de manera coherente..</p>																		
+				</section>
+				<section data-background-gradient="linear-gradient(to bottom, #283b95, #17b2c3)">
+					<h2> Conclusión</h2>												
+					<p>En resumen, Flux es una herramienta valiosa para cualquier desarrollador que trabaje con aplicaciones de React, ya que puede ayudar a crear aplicaciones más escalables, fáciles de entender y mantener, y más robustas.</p>																		
+				</section>
+				<section data-background-gradient="linear-gradient(to bottom, #283b95, #17b2c3)">
+					<img src="img/Flux-Flow-3.png">																	
+				</section>					
 			</div>			
 		</div>
 		
